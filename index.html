@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d32">
+  <meta name="description" content="Excellent Child Academy school management portal for students, staff, attendance, fees and learning.">
+  <title>Excellent Child Academy | School Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="toast" class="toast" role="status"></div>
+  <section id="login-screen" class="login-screen">
+    <div class="login-left">
+      <div class="brand brand-light"><div class="brand-mark">E<span>+</span></div><div><strong>EXCELLENT CHILD</strong><small>ACADEMY</small></div></div>
+      <div class="welcome-copy">
+        <div class="eyebrow"><span></span> LEARN · GROW · EXCEL</div>
+        <h1>Every child.<br><em>Every possibility.</em></h1>
+        <p>A calmer, clearer way to keep your school connected — from the classroom to the home.</p>
+      </div>
+      <div class="login-bottom"><span>✳</span><p>Building bright futures, one learner at a time.</p><small>EXCELLENCE IN EVERY STEP</small></div>
+      <div class="decor-circle circle-one"></div><div class="decor-circle circle-two"></div>
+    </div>
+    <div class="login-right">
+      <div class="mobile-brand brand"><div class="brand-mark">E<span>+</span></div><div><strong>EXCELLENT CHILD</strong><small>ACADEMY</small></div></div>
+      <div class="login-form-wrap">
+        <div class="login-heading"><div class="eyebrow">SCHOOL MANAGEMENT PORTAL</div><h2>Welcome back</h2><p>Sign in securely to your school workspace.</p></div>
+        <form id="request-code-form">
+          <label for="login-email">School email address</label>
+          <div class="input-wrap"><span class="input-icon">✉</span><input id="login-email" type="email" autocomplete="email" placeholder="you@school.edu" required></div>
+          <button class="btn btn-primary btn-full" type="submit">Send sign-in code <span>→</span></button>
+          <p class="form-hint">We'll send a one-time code to your registered email.</p>
+        </form>
+        <form id="verify-code-form" class="hidden">
+          <label for="otp-code">Six-digit sign-in code</label>
+          <div class="input-wrap"><span class="input-icon">⌑</span><input id="otp-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" required></div>
+          <button class="btn btn-primary btn-full" type="submit">Verify and continue <span>→</span></button>
+          <button type="button" id="change-email" class="text-button">Use a different email</button>
+        </form>
+        <div class="login-trust"><span>♧</span><div><strong>Your information matters</strong><small>Secure access for authorised school community members.</small></div></div>
+        <div class="login-foot">© <span id="year"></span> Excellent Child Academy. All rights reserved.</div>
+      </div>
+    </div>
+  </section>
+
+  <div id="app-shell" class="app-shell hidden">
+    <aside id="sidebar" class="sidebar">
+      <div class="brand brand-light sidebar-brand"><div class="brand-mark">E<span>+</span></div><div><strong>EXCELLENT CHILD</strong><small>ACADEMY</small></div></div>
+      <div class="side-label">WORKSPACE</div>
+      <nav id="nav-menu" class="nav-menu">
+        <button class="nav-item active" data-page="dashboard"><span>▦</span> Overview</button>
+        <div class="side-label side-label-spaced">SCHOOL</div>
+        <button class="nav-item" data-page="students"><span>♙</span> Students</button>
+        <button class="nav-item" data-page="staff"><span>♧</span> Staff directory</button>
+        <button class="nav-item" data-page="classes"><span>▤</span> Classes</button>
+        <button class="nav-item" data-page="attendance"><span>✓</span> Attendance</button>
+        <div class="side-label side-label-spaced">ACADEMICS & FINANCE</div>
+        <button class="nav-item" data-page="results"><span>▧</span> Exam results</button>
+        <button class="nav-item" data-page="fees"><span>₦</span> Fees & payments</button>
+        <div class="side-label side-label-spaced">COMMUNITY</div>
+        <button class="nav-item" data-page="announcements"><span>◉</span> Announcements</button>
+        <button class="nav-item" data-page="messages"><span>✉</span> Contact notes</button>
+        <button class="nav-item admin-only" data-page="users"><span>♙</span> User accounts</button>
+        <button class="nav-item admin-only" data-page="audit"><span>≋</span> Activity log</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="support-card"><div class="support-icon">✦</div><strong>Here to help</strong><p>Need assistance with the portal?</p><a href="mailto:office@excellentchildacademy.edu">Contact school office ↗</a></div><div class="sidebar-footer">EXCELLENT CHILD ACADEMY <span>•</span> PORTAL</div></div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar"><button id="mobile-menu" class="icon-button mobile-menu" aria-label="Open menu">☰</button><div class="breadcrumb">School workspace <span>/</span> <strong id="current-crumb">Overview</strong></div><div class="topbar-right"><div class="today-label" id="today-label"></div><div class="top-avatar" id="top-avatar">A</div><div class="top-user"><strong id="top-user-name">Administrator</strong><small id="top-user-role">School admin</small></div><button id="logout-btn" class="logout-btn" title="Sign out">↗</button></div></header>
+      <div id="page-content" class="page-content"><div class="loading"><div class="spinner"></div>Preparing your workspace…</div></div>
+      <footer class="main-footer"><span>© <span id="footer-year"></span> Excellent Child Academy</span><span>LEARN · GROW · EXCEL</span></footer>
+    </main>
+  </div>
+  <div id="modal" class="modal-backdrop hidden"><div class="modal"><div class="modal-head"><div><div class="eyebrow">SCHOOL RECORD</div><h2 id="modal-title">Add record</h2></div><button id="modal-close" class="icon-button" aria-label="Close">×</button></div><form id="record-form"><div id="modal-fields" class="modal-fields"></div><div class="modal-actions"><button type="button" id="modal-cancel" class="btn btn-secondary">Cancel</button><button type="submit" class="btn btn-primary">Save record <span>→</span></button></div></form></div></div>
+  <script src="/app.js"></script>
+</body>
+</html>
